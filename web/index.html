@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+         <style>
+             table, th, td {
+                 border: 2px solid black;
+                 border-collapse: collapse;
+             }
+             table.center {
+                 margin-left: auto; 
+                 margin-right: auto;
+             }
+             body{
+                 background-color: wheat;
+             }
+         </style>
+        <title>Web Services</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var request = new XMLHttpRequest ();
+            request.open("GET","http://localhost:8080/WebService/webresources/product.appliance","true");
+            request.onload = function (){
+                var data = JSON.parse(this.response);
+                
+                table = document.getElementById("myTable");
+                
+                for(var i = 0 ; i<data.length;i++){
+                    row= table.insertRow();
+                    cell1 = row.insertCell();
+                    cell2 = row.insertCell();
+                    cell3 = row.insertCell();
+                    cell4 = row.insertCell();
+                    cell5 = row.insertCell();
+                    cell6 = row.insertCell();
+                    cell7 = row.insertCell();
+                    cell8 = row.insertCell();
+                    cell9 = row.insertCell();
+                    cell10 = row.insertCell();
+                    
+                    cell1.innerHTML = data[i].productid;
+                    cell2.innerHTML = data[i].productname;
+                    cell3.innerHTML = data[i].producttype;
+                    cell4.innerHTML = data[i].comapnyname;
+                    cell5.innerHTML = data[i].productprice;
+                    cell6.innerHTML = data[i].discountprice;
+                    cell7.innerHTML = data[i].description;
+                    cell8.innerHTML = data[i].stockavailable;
+                    cell9.innerHTML = data[i].manufacturer;
+                    cell10.innerHTML = data[i].productcode;
+                    }
+                };
+            request.send();
+            </script>
+    </head>
+    <body>
+        <div><h1>Product Details</h1></div>
+        <table id="myTable">
+            <tr>
+                <th> Product Id </th>
+                <th> Product Name </th>
+                <th> Product Type </th>
+                <th> Company Name </th>
+                <th> Product Price </th>
+                <th> Discount Price </th>
+                <th> Product Description  </th>
+                <th> Stocks Available  </th>
+                <th> Manufacturer Id </th>
+                <th> Product Code </th>
+            </tr>
+        </table>
+    </body>
+</html>

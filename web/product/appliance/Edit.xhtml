@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditApplianceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditApplianceLabel_productid}" for="productid" />
+                    <h:inputText id="productid" value="#{applianceController.selected.productid}" title="#{bundle.EditApplianceTitle_productid}" required="true" requiredMessage="#{bundle.EditApplianceRequiredMessage_productid}"/>
+                    <h:outputLabel value="#{bundle.EditApplianceLabel_productname}" for="productname" />
+                    <h:inputText id="productname" value="#{applianceController.selected.productname}" title="#{bundle.EditApplianceTitle_productname}" />
+                    <h:outputLabel value="#{bundle.EditApplianceLabel_producttype}" for="producttype" />
+                    <h:inputText id="producttype" value="#{applianceController.selected.producttype}" title="#{bundle.EditApplianceTitle_producttype}" />
+                    <h:outputLabel value="#{bundle.EditApplianceLabel_comapnyname}" for="comapnyname" />
+                    <h:inputText id="comapnyname" value="#{applianceController.selected.comapnyname}" title="#{bundle.EditApplianceTitle_comapnyname}" />
+                    <h:outputLabel value="#{bundle.EditApplianceLabel_productprice}" for="productprice" />
+                    <h:inputText id="productprice" value="#{applianceController.selected.productprice}" title="#{bundle.EditApplianceTitle_productprice}" />
+                    <h:outputLabel value="#{bundle.EditApplianceLabel_discountprice}" for="discountprice" />
+                    <h:inputText id="discountprice" value="#{applianceController.selected.discountprice}" title="#{bundle.EditApplianceTitle_discountprice}" />
+                    <h:outputLabel value="#{bundle.EditApplianceLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{applianceController.selected.description}" title="#{bundle.EditApplianceTitle_description}" />
+                    <h:outputLabel value="#{bundle.EditApplianceLabel_stockavailable}" for="stockavailable" />
+                    <h:inputText id="stockavailable" value="#{applianceController.selected.stockavailable}" title="#{bundle.EditApplianceTitle_stockavailable}" />
+                    <h:outputLabel value="#{bundle.EditApplianceLabel_manufacturer}" for="manufacturer" />
+                    <h:inputText id="manufacturer" value="#{applianceController.selected.manufacturer}" title="#{bundle.EditApplianceTitle_manufacturer}" />
+                    <h:outputLabel value="#{bundle.EditApplianceLabel_productcode}" for="productcode" />
+                    <h:inputText id="productcode" value="#{applianceController.selected.productcode}" title="#{bundle.EditApplianceTitle_productcode}" />
+                </h:panelGrid>
+                <h:commandLink action="#{applianceController.update}" value="#{bundle.EditApplianceSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditApplianceViewLink}"/>
+                <br />
+                <h:commandLink action="#{applianceController.prepareList}" value="#{bundle.EditApplianceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditApplianceIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

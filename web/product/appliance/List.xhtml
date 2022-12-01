@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListApplianceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListApplianceEmpty}" rendered="#{applianceController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{applianceController.items.rowCount > 0}">
+                    <h:outputText value="#{applianceController.pagination.pageFirstItem + 1}..#{applianceController.pagination.pageLastItem + 1}/#{applianceController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{applianceController.previous}" value="#{bundle.Previous} #{applianceController.pagination.pageSize}" rendered="#{applianceController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{applianceController.next}" value="#{bundle.Next} #{applianceController.pagination.pageSize}" rendered="#{applianceController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{applianceController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplianceTitle_productid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplianceTitle_productname}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplianceTitle_producttype}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.producttype}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplianceTitle_comapnyname}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.comapnyname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplianceTitle_productprice}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productprice}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplianceTitle_discountprice}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.discountprice}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplianceTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplianceTitle_stockavailable}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.stockavailable}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplianceTitle_manufacturer}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.manufacturer}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplianceTitle_productcode}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productcode}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{applianceController.prepareView}" value="#{bundle.ListApplianceViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{applianceController.prepareEdit}" value="#{bundle.ListApplianceEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{applianceController.destroy}" value="#{bundle.ListApplianceDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{applianceController.prepareCreate}" value="#{bundle.ListApplianceCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListApplianceIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
